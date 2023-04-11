@@ -1,0 +1,186 @@
+.top-title {
+    display: inline-block;
+    padding-top: 1.406813rem;
+    margin-left: 1.9375rem;
+    font-size: 20px;
+    line-height: inherit;
+    white-space: nowrap;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.padding-right {
+    padding-right: 10px;
+}
+
+.header-height {
+    height: 281px;
+}
+
+.dropDown-btn {
+    width: 100%;
+    text-align: left;
+    color: #999;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.overlay {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #f6f5f529;
+    z-index: 9;
+}
+
+.overlay__inner {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.overlay__content {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.05);
+    border-top-color: black;
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    border-style: solid;
+}
+
+@keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.bold {
+    font-weight: bold;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.font-15 {
+    font-size: 15px;
+}
+
+.font-30 {
+    font-size: 30px;
+}
+
+.font-60 {
+    font-size: 60px;
+}
+
+.disabled-color {
+    background: #f6f5f529;
+}
+
+.nonClickable {
+    pointer-events: none
+}
+
+.margin-bottom {
+    margin-bottom: 6px;
+}
+
+.tide-img-height {
+    height: 330px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-text-block-1 {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 50%;
+    background-color: red;
+    height: 70px;
+    width: 70px;
+}
+  
+.img-text-block-2 {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.img-text-block-3 {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.img-text-block-4 {
+    position: absolute;
+    top: 210px;
+    right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.chartWrapper {
+    position: relative;
+}
+
+.chartWrapper > canvas {
+    position: absolute;
+}
+
+.chartAreaWrapper {
+    width: 7000px;
+}
+
+.react-datepicker-popper {
+    z-index: 35 !important; 
+}
+
+.map {
+    height: 500px;
+    width: 100%;
+}
+
+.mapMarker {
+  position: 'absolute';
+  width: 40px;
+  height: 40px;
+  left: -20;
+  top: -20;
+
+  border:'5px solid #f44336';
+  border-radius: 50%;
+  background-color: 'white';
+  text-align: 'center';
+  color: '#3f51b5';
+  font-size: 16;
+  font-weight: 'bold';
+  padding: 4;
+  cursor: 'pointer';
+}
