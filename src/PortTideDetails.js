@@ -74,7 +74,7 @@ export default class PortTideDetails extends React.Component {
                             </div>
                             <div className="card-body">
                                 The predicted tide times today on {DayValue} {DateValue} for {selectedPort} are: First high tide is at {highTideTime[0]}, first low tide at {lowTideTime[0]}.
-                                Second high tide is are {highTideTime[1]}, second low tide at {lowTideTime[1]}.
+                                Second high tide is at {highTideTime[1]}, second low tide at {lowTideTime[1]}.
 
                                 <div className="waveWrapper waveAnimation">
                                     <div className="waveWrapperInner bgTop">

@@ -36,18 +36,6 @@ export function getTideType(item) {
     return tide
 }
 
-// export function getalldates(yearValue, monthValue, dateValue) {
-//     let date = new Date(yearValue, monthValue, dateValue);
-//     let dates = [];
-//     let i = 0;
-//     while (i <= 7) {
-//         dates.push(new Date(date));
-//         date.setDate(date.getDate() + 1);
-//         i++;
-//     }
-//     return dates;
-// }
-
 export function getChartData(monthlyPortTideDetails) {
     var data = [];
     var wrapper = monthlyPortTideDetails && monthlyPortTideDetails.length > 0 ?

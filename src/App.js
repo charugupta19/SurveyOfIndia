@@ -7,6 +7,7 @@ export default class App extends React.Component {
         return (
             <>
                 <div className="main-panel">
+                <img className="logo" src="../Resources/images/logo.png" />
                     <div className="top-title">
                         <div className="logoContent">
                             <h2>Survey Of India</h2>

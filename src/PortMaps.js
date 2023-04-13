@@ -42,10 +42,6 @@ export default class PortMaps extends React.Component {
                                         },
                                     }}
                                 />
-                                {/* <Popup>
-                                        A pretty CSS3 popup. <br /> Easily customizable.
-                                    </Popup>
-                                </Marker> */}
                             </MapContainer>
 
                             {/* <GoogleMapReact
