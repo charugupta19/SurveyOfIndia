@@ -12,48 +12,63 @@
         "Location": [16.05, 97.34]
     },
     {
-        "Name": "Bassein"
+        "Name": "Bassein",
+        "Location": [16.47, 94.47]
     },
     {
-        "Name": "Beypore"
+        "Name": "Beypore",
+        "Location": [11.10, 75.48]
     },
     {
-        "Name": "Bhavnagar"
+        "Name": "Bhavnagar",
+        "Location": [21.45, 72.14]
     },
     {
-        "Name": "Bremen"
+        "Name": "Bremen",
+        "Location": [53.07, 8.43]
     },
     {
-        "Name": "Bremerhaven"
+        "Name": "Bremerhaven",
+        "Location": [53.33, 8.34]
     },
     {
-        "Name": "Bushire"
+        "Name": "Bushire",
+        "Location": [28.54, 50.45]
     },
     {
-        "Name": "Cape Town"
+        "Name": "Cape Town",
+        "Location": [33.54, 18.25]
     },
     {
-        "Name": "Chandbali"
+        "Name": "Chandbali",
+        "Location": [20.46, 86.44]
     },
     {
-        "Name": "Chemulpho"
+        "Name": "Chemulpho",
+        "Location": [37.28, 126.37]
     },
     {
-        "Name": "Chennai"
+        "Name": "Chennai",
+        "Location": [13.06, 80.18]
     },
     {
-        "Name": "Cochin"
+        "Name": "Cochin",
+        "Location": [9.58, 76.16]
     },
     {
-        "Name": "Colombo"
+        "Name": "Colombo",
+        "Location": [6.57, 79.51]
     },
     {
-        "Name": "Cuxhaven"
+        "Name": "Cuxhaven",
+        "Location": [53.52, 8.43]
     },
     {
-        "Name": "Dar-Es-Salam"
+        "Name": "Dar-Es-Salam",
+        "Location": [6.50, 39.17]
     },
     {
-        "Name": "Mumbai"
+        "Name": "Mumbai",
+        "Location": [18.55, 72.50]
     }
 ]
