@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/SurveyOfIndia/static/css/main.551feeb1.css",
-    "main.js": "/SurveyOfIndia/static/js/main.079d589b.js",
+    "main.js": "/SurveyOfIndia/static/js/main.4e9798cb.js",
     "index.html": "/SurveyOfIndia/index.html",
     "main.551feeb1.css.map": "/SurveyOfIndia/static/css/main.551feeb1.css.map",
-    "main.079d589b.js.map": "/SurveyOfIndia/static/js/main.079d589b.js.map"
+    "main.4e9798cb.js.map": "/SurveyOfIndia/static/js/main.4e9798cb.js.map"
   },
   "entrypoints": [
     "static/css/main.551feeb1.css",
-    "static/js/main.079d589b.js"
+    "static/js/main.4e9798cb.js"
   ]
 }
