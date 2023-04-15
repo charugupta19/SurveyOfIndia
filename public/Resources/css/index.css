@@ -114,12 +114,12 @@
     position: absolute;
     top: 15px;
     right: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     border-radius: 50%;
     background-color: red;
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
+    text-align: center;
 }
   
 .img-text-block-2 {
@@ -144,6 +144,11 @@
     right: 20px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.circle-text {
+    color: white;
+    font-weight: bold;
 }
 
 .chartWrapper {
@@ -187,9 +192,15 @@
 
 .logo {
     position: fixed;
-    width: 66%;
-    height: 52%;
-    opacity: 0.3;
-    margin-top: 74%;
-    margin-left: 16%;
+    height: 80%;
+    opacity: 0.1;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.zIndex-5,
+.react-datepicker__input-container {
+    z-index: 5;
 }

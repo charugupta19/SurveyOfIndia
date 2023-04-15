@@ -78,32 +78,40 @@ export function getRemainingTime(futureTime, nowTime) {
     return hours + ' hours ' + minutes + ' minutes.'
 }
 
-export function getNearestTime(remainingTimeArr) {
-    var hourArr = [], minuteArr = [], minData = [];
-    remainingTimeArr && remainingTimeArr.map((value) => {
-        const hour = parseInt(value.remainingTime.split(" ")[0]);
-        const minute = parseInt(value.remainingTime.split(" ")[2]);
+export function getNearestTideObj(portTideDetails, highLowTide) {
+    const currentTime = new Date().getHours();
+    const portTideTimes = [];
 
-        hourArr.push({
-            hour: hour,
-            portDetail: value.portDetail,
-            index: value.portDetail
-        });
-        minuteArr.push({
-            minute: minute,
-            portDetail: value.portDetail,
-            index: value.portDetail
-        });
+    highLowTide && highLowTide.map((value) => portTideTimes.push(value.split(":")[0]))
 
-        hourArr.reduce((a, b) => Math.min(a.hour, b.hour));
-        minuteArr.reduce((a, b) => Math.min(a.minute, b.minute));
+    var sortedTideTime = portTideTimes.sort(function (a, b) {
+        var diffA = Math.abs(a - currentTime),
+            diffB = Math.abs(b - currentTime);
+        if (diffA < diffB) {
+            return -1;
+        } else if (diffA > diffB) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
 
-        minData.push(hourArr[0].hour);
-        minData.push(minuteArr[0].minute);
-        const min = minData.reduce((a, b) => Math.min(a, b));
+    var nearestTideTime = sortedTideTime[0];
 
-        console.log("minData--", min);
-    })
-
-
+    for (let i = 0; i < portTideDetails.length; i++) {
+        if (nearestTideTime === portTideDetails[i].Time.split(":")[0]) {
+            const height = parseInt(portTideDetails[i].Height.slice(0, 1));
+            if (height >= 4) {
+                return {
+                    class: "icon-minimal-up",
+                    tide: "high"
+                }
+            } else if (height < 4) {
+                return {
+                    class: "icon-minimal-down",
+                    tide: "low"
+                }
+            }
+        }
+    }
 }

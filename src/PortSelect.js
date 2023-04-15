@@ -7,31 +7,17 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default class PortSelect extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            placeHolderValue: "Select",
-            portSelected: "",
-            startDate: new Date()
-        }
+    componentDidMount() {
+        const { portSelected, startDate } = this.props;
+        this.props.getPortDetails(portSelected, startDate);
     }
 
-    getPortSelected = (port) => {
-        this.setState({
-            placeHolderValue: port.Name,
-            portSelected: port.Name
-        });
-    }
-
-    setStartDate = (date) => {
-        this.setState({
-            startDate: date
-        });
-    }
+    scrollToMap() {
+        window.location.href = "#PortMap";
+    };
 
     render() {
-        const { portNames, getPortDetails } = this.props;
-        const { placeHolderValue, portSelected, startDate } = this.state;
+        const { portNames, getPortDetails, portSelected, startDate, setStartDate, getPortSelected } = this.props;
 
 
         const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
@@ -56,10 +42,10 @@ export default class PortSelect extends React.Component {
                                         <div className="row">
                                             <div className="col-lg-12 col-md-12 col-sm-12">
                                                 <div className="dropdown bootstrap-select full-width">
-                                                    <button type="button" className="btn dropdown-toggle select-with-transition bs-placeholder" data-toggle="dropdown" role="button" title={placeHolderValue} aria-expanded="false">
+                                                    <button type="button" className="btn dropdown-toggle select-with-transition bs-placeholder zIndex-5" data-toggle="dropdown" title={portSelected} aria-expanded="false">
                                                         <div className="filter-option">
                                                             <div className="filter-option-inner">
-                                                                <div className="filter-option-inner-inner">{placeHolderValue}</div>
+                                                                <div className="filter-option-inner-inner">{portSelected}</div>
                                                             </div>
                                                         </div>
                                                     </button>
@@ -67,14 +53,14 @@ export default class PortSelect extends React.Component {
                                                         <div className="inner show">
                                                             <ul className="dropdown-menu inner show">
                                                                 <li className="disabled">
-                                                                    <a role="option" className="dropdown-item disabled" tabIndex="-1">
+                                                                    <a role="option" aria-selected="true" className="dropdown-item disabled" tabIndex="-1">
                                                                         <span className="text">Choose the Port</span>
                                                                     </a>
                                                                 </li>
                                                                 {portNames.map((value, index) => {
                                                                     return (
-                                                                        <li key={index} onClick={() => this.getPortSelected(value)}>
-                                                                            <a role="option" className="dropdown-item" tabIndex="0">
+                                                                        <li key={index} onClick={() => getPortSelected(value)}>
+                                                                            <a role="option" aria-selected="true" className="dropdown-item" tabIndex="0">
                                                                                 <span>
                                                                                     {value.Name}
                                                                                 </span>
@@ -93,15 +79,30 @@ export default class PortSelect extends React.Component {
                                                 <DatePicker
                                                     showIcon
                                                     selected={startDate}
-                                                    onChange={(date) => this.setStartDate(date)}
+                                                    onChange={(date) => setStartDate(date)}
                                                     customInput={<ExampleCustomInput />}
                                                     popperClassName="datepicker-class"
                                                     todayButton="TODAY"
+                                                    popperModifiers={[
+                                                        {
+                                                            name: 'arrow',
+                                                            options: { padding: 24 },
+                                                        },
+                                                    ]}
                                                 />
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-sm-6">
-                                                <button className="btn btn-primary animation-on-hover full-width" onClick={() => getPortDetails(portSelected, startDate)}>
-                                                    <i className="tim-icons icon-sound-wave"></i> Get Port Data
+                                                <button className="btn btn-primary animation-on-hover full-width zIndex-5" onClick={() => getPortDetails(portSelected, startDate)}>
+                                                    Get Selected Port Data
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-12 col-md-12 col-sm-12">
+                                                <br />
+                                                <p>Port can also be selected from the Map below.</p>
+                                                <button className="btn btn-primary animation-on-hover full-width zIndex-5" onClick={() => this.scrollToMap()} type="button">
+                                                    Select Port on Map
                                                 </button>
                                             </div>
                                         </div>

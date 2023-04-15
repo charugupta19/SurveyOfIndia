@@ -21,14 +21,15 @@ export default class Content extends React.Component {
             noDataFound: false,
             noPortSelected: false,
             selectedPort: "",
-            selectedDate: {}
-
+            selectedDate: {},
+            portSelected: "Mumbai",
+            startDate: new Date()
         }
     }
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get(`test/getPorts`)
+        axios.get(`Responses/ports.json`)
             .then(res => {
                 this.setState({
                     loading: false,
@@ -38,26 +39,7 @@ export default class Content extends React.Component {
             .catch((err) => {
                 this.setState({
                     loading: false,
-                    // portNames: { error: err }
-                    portNames: [
-                        { Name: "Aden" },
-                        { Name: "Akyab" },
-                        { Name: "Amherst" },
-                        { Name: "Bassein" },
-                        { Name: "Beypore" },
-                        { Name: "Bhavnagar" },
-                        { Name: "Bremen" },
-                        { Name: "Bremerhaven" },
-                        { Name: "Bushire" },
-                        { Name: "Cape Town" },
-                        { Name: "Chandbali" },
-                        { Name: "Chemulpho" },
-                        { Name: "Chennai" },
-                        { Name: "Cochin" },
-                        { Name: "Colombo" },
-                        { Name: "Cuxhaven" },
-                        { Name: "Dar-Es-Salam" }
-                    ]
+                    portNames: { error: err }
                 })
             })
     }
@@ -81,7 +63,8 @@ export default class Content extends React.Component {
             const DateValue = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
             this.getMonthlyPortDetails(port, monthNames[date.getMonth()], date.getFullYear());
 
-            axios.post(`test/portTideDetails`, { "Port": port, "Date": DateValue }, { headers: { "Content-Type": "text/plain" } })
+            // axios.post(`Responses/portTideDetails.json`, { "Port": port, "Date": DateValue }, { headers: { "Content-Type": "text/plain" } })
+            axios.get(`Responses/portTideDetails.json`)
                 .then(res => {
                     if (res.data && res.data.length > 0) {
                         this.setState({
@@ -97,33 +80,15 @@ export default class Content extends React.Component {
                 })
                 .catch(err => {
                     this.setState({
-                        showPortDetails: true, //remove
-                        // portTideDetails: { error: err }
-                        portTideDetails: [
-                            {
-                                "Time": "03:10",
-                                "Height": "4.0 m"
-                            },
-                            {
-                                "Time": "11:51",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:59",
-                                "Height": "1.8 m"
-                            }
-                        ]
+                        portTideDetails: { error: err }
                     })
                 })
         }
     }
 
     getMonthlyPortDetails = (port, month, year) => {
-        axios.get(`$test/monthlyPortTideDetails/${port}/${month}/${year}`)
+        // axios.get(`Responses/monthlyPortTideDetails.json/${port}/${month}/${year}`)
+        axios.get(`Responses/monthlyPortTideDetails.json`)
             .then(res => {
 
                 this.setState({
@@ -135,561 +100,26 @@ export default class Content extends React.Component {
             .catch((err) => {
                 this.setState({
                     loading: false,
-                    monthlyPortTideDetails: [
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "04:12 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "12:25 PM",
-                                "Height": "4.4 m"
-                            },
-                            {
-                                "Time": "20:19 PM",
-                                "Height": "1.9 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "04:12 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "12:25 PM",
-                                "Height": "4.4 m"
-                            },
-                            {
-                                "Time": "20:19 PM",
-                                "Height": "1.9 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "03:10 AM",
-                                "Height": "2.0 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "0.5 m"
-                            },
-                            {
-                                "Time": "20:23 PM",
-                                "Height": "4.9 m"
-                            },
-                            {
-                                "Time": "23:30 PM",
-                                "Height": "1.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "05:10 AM",
-                                "Height": "3.0 m"
-                            },
-                            {
-                                "Time": "10:51 AM",
-                                "Height": "1.5 m"
-                            },
-                            {
-                                "Time": "21:23 PM",
-                                "Height": "3.9 m"
-                            },
-                            {
-                                "Time": "23:00 PM",
-                                "Height": "2.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "04:12 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "12:25 PM",
-                                "Height": "4.4 m"
-                            },
-                            {
-                                "Time": "20:19 PM",
-                                "Height": "1.9 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ],
-                        [
-                            {
-                                "Time": "06:10 AM",
-                                "Height": "1.9 m"
-                            },
-                            {
-                                "Time": "11:51 AM",
-                                "Height": "2.5 m"
-                            },
-                            {
-                                "Time": "18:13 PM",
-                                "Height": "5.9 m"
-                            },
-                            {
-                                "Time": "20:47 PM",
-                                "Height": "3.8 m"
-                            }
-                        ]
-                    ]
+                    monthlyPortTideDetails: { error: err }
                 })
             })
     }
 
+    getPortSelected = (port) => {
+        this.setState({
+            portSelected: port.Name
+        });
+    }
+
+    setStartDate = (date) => {
+        this.setState({
+            startDate: date
+        });
+    }
+
     render() {
 
-        const { loading, portNames, showPortDetails, selectedPort, selectedDate, portTideDetails, noDataFound, monthlyPortTideDetails, noPortSelected } = this.state;
+        const { loading, portNames, showPortDetails, selectedPort, selectedDate, portTideDetails, noDataFound, monthlyPortTideDetails, noPortSelected, portSelected, startDate } = this.state;
 
         const noDataFoundMessage = "No Tide Data associated with the Port found.";
         const noPortSelectedMessage = "Please select port to view data";
@@ -698,7 +128,7 @@ export default class Content extends React.Component {
             <>
                 {loading && <Loader />}
 
-                <PortSelect portNames={portNames} getPortDetails={this.getPortDetails} />
+                <PortSelect portNames={portNames} getPortDetails={this.getPortDetails} getPortSelected={this.getPortSelected} setStartDate={this.setStartDate} portSelected={portSelected} startDate={startDate} />
 
                 {
                     showPortDetails ?
@@ -706,7 +136,7 @@ export default class Content extends React.Component {
                             <PortTideDetails portTideDetails={portTideDetails} selectedPort={selectedPort} selectedDate={selectedDate} />
                             <PortTideTable portTideDetails={portTideDetails} selectedPort={selectedPort} selectedDate={selectedDate} />
                             <PortTideChart selectedDate={selectedDate} selectedPort={selectedPort} monthlyPortTideDetails={monthlyPortTideDetails} />
-                            <PortMaps />
+                            <PortMaps portNames={portNames} getPortDetails={this.getPortDetails} startDate={startDate} getPortSelected={this.getPortSelected} />
                         </>
                         :
                         noDataFound ?
